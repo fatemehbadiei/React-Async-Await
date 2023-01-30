@@ -1,0 +1,44 @@
+
+.newComment{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #4338ca;
+    background-color: #e0e7ff;
+    width: 600px;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.formControl{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.formControl input{
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    margin: 5px 0 5px 20px;
+}
+
+.formControl textarea{
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 4px 12px;
+    margin: 5px 0 5px 20px;
+}
+
+.newComment button{
+    background-color: #4338ca;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    margin: 5px 0;
+    padding: 10px 12px;
+}

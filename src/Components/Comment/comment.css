@@ -1,0 +1,12 @@
+
+.comment{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #4338ca;
+    background-color: #e0e7ff;
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+}
