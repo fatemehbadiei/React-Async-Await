@@ -203,15 +203,79 @@
 //write this code with functions instead of http and get and post etc...
 
 
+// import "./FullComment.css"
+// import {useEffect, useState} from "react";
+// import {deleteComment} from "../../services/deleteComment";
+// import {getAllComments} from "../../services/getAllComments";
+// import {getOneComment} from "../../services/getOneComment";
+//
+//
+// const FullComment = ({selectedId,setComments,setSelectedId}) => {
+//
+//     const [comment, setComment] = useState(null);
+//
+//     useEffect(() => {
+//         if (selectedId) {
+//             getOneComment(selectedId).then((response) => {
+//                 setComment(response.data);
+//             }).catch()
+//         }
+//     }, [selectedId]);
+//
+//     // const deleteHandler = () => {
+//     //     http.delete(`/comments/${selectedId}`).then((response)=>{
+//     //         console.log(response.data);
+//     //     }).catch((err)=>{
+//     //         console.log(err);
+//     //     })
+//     // }
+//
+//
+//     const deleteHandler = async () => {
+//         try{
+//             await deleteComment(selectedId);
+//             const {data} = await getAllComments();
+//             setComments(data);
+//             setComment(null);
+//             setSelectedId(null);
+//         }catch (e) {
+//
+//         }
+//
+//     }
+//
+//     let commentDetail = <p>Please choose one comment</p>
+//
+//     if (selectedId) commentDetail = <p>Loading...</p>
+//
+//     if (comment) {
+//         commentDetail =
+//             <div className="fullComment">
+//                 <p>Name : {comment.name}</p>
+//                 <p>Email : {comment.email}</p>
+//                 <p>Body : {comment.body}</p>
+//                 <button onClick={deleteHandler}>Delete</button>
+//             </div>
+//     }
+//     return commentDetail;
+// }
+//
+// export default FullComment;
+
+//write this code with react-router-dom
+
+
 import "./FullComment.css"
 import {useEffect, useState} from "react";
 import {deleteComment} from "../../services/deleteComment";
 import {getAllComments} from "../../services/getAllComments";
 import {getOneComment} from "../../services/getOneComment";
+import {useParams ,useNavigate} from "react-router-dom";
 
+const FullComment = () => {
 
-const FullComment = ({selectedId,setComments,setSelectedId}) => {
-
+    const {selectedId} = useParams();
+    let navigate = useNavigate();
     const [comment, setComment] = useState(null);
 
     useEffect(() => {
@@ -222,22 +286,12 @@ const FullComment = ({selectedId,setComments,setSelectedId}) => {
         }
     }, [selectedId]);
 
-    // const deleteHandler = () => {
-    //     http.delete(`/comments/${selectedId}`).then((response)=>{
-    //         console.log(response.data);
-    //     }).catch((err)=>{
-    //         console.log(err);
-    //     })
-    // }
-
 
     const deleteHandler = async () => {
         try{
             await deleteComment(selectedId);
-            const {data} = await getAllComments();
-            setComments(data);
+            navigate("/");
             setComment(null);
-            setSelectedId(null);
         }catch (e) {
 
         }

@@ -294,14 +294,76 @@
 
 
 
+// import "./NewComment.css"
+// import {useState} from "react";
+// import {postNewComment} from "../../services/postNewComment";
+// import {getAllComments} from "../../services/getAllComments";
+//
+//
+// const NewComment = ({setComments}) => {
+//
+//     const [newComment, setNewComment] = useState({
+//         name: "",
+//         email: "",
+//         body: ""
+//     });
+//
+//     const changeHandler = (e) => {
+//         setNewComment({...newComment, [e.target.name]: e.target.value});
+//     }
+//
+//     // const addNewComment = () => {
+//     //     http.post("/comments",{...newComment,postId:10}).then((response)=>{
+//     //         http.get("/comments").then((response)=>{
+//     //             console.log(response.data)
+//     //             setComments(response.data)
+//     //         })
+//     //     }).catch()
+//     // }
+//
+//     const addNewComment = async () => {
+//         try {
+//             await postNewComment({...newComment, postId: 10});
+//             const {data} = await getAllComments();
+//             setComments(data);
+//         } catch (e) {
+//         }
+//     }
+//
+//     return (
+//         <div className="newComment">
+//             <h2>Add new comment</h2>
+//             <div className="formControl">
+//                 <label>Name</label>
+//                 <input type="text" name="name" onChange={changeHandler}/>
+//             </div>
+//             <div className="formControl">
+//                 <label>Email</label>
+//                 <input type="email" name="email" onChange={changeHandler}/>
+//             </div>
+//             <div className="formControl">
+//                 <label>Body</label>
+//                 <textarea type="textarea" name="body" onChange={changeHandler}/>
+//             </div>
+//             <button onClick={addNewComment}>Add New comment</button>
+//         </div>
+//     )
+// }
+//
+// export default NewComment;
+
+
+//write this code with react-router-dom
+
 import "./NewComment.css"
 import {useState} from "react";
 import {postNewComment} from "../../services/postNewComment";
-import {getAllComments} from "../../services/getAllComments";
+import {useNavigate} from "react-router-dom";
 
 
-const NewComment = ({setComments}) => {
+const NewComment = () => {
 
+    let navigate = useNavigate();
     const [newComment, setNewComment] = useState({
         name: "",
         email: "",
@@ -312,20 +374,11 @@ const NewComment = ({setComments}) => {
         setNewComment({...newComment, [e.target.name]: e.target.value});
     }
 
-    // const addNewComment = () => {
-    //     http.post("/comments",{...newComment,postId:10}).then((response)=>{
-    //         http.get("/comments").then((response)=>{
-    //             console.log(response.data)
-    //             setComments(response.data)
-    //         })
-    //     }).catch()
-    // }
 
     const addNewComment = async () => {
         try {
             await postNewComment({...newComment, postId: 10});
-            const {data} = await getAllComments();
-            setComments(data);
+            navigate("/");
         } catch (e) {
         }
     }

@@ -1,11 +1,11 @@
 // import Comment from "../../Components/Comment/Comment";
 // import FullComment from "../../Components/FullComment/FullComment";
 // import NewComment from "../../Components/NewComment/NewComment";
-// import "./discussion.css"
+// import "./Comments.css"
 // import {useEffect, useState} from "react";
 // import axios from "axios";
 
-// const Discussion = () => {
+// const Comments = () => {
 //
 //     const [comments,setComments] = useState(null);
 //
@@ -32,12 +32,12 @@
 //   )
 // }
 //
-// export default Discussion;
+// export default Comments;
 
 
 //write this code with async await
 
-// const Discussion = () => {
+// const Comments = () => {
 //
 //     const [comments,setComments] = useState(null);
 //
@@ -81,10 +81,10 @@
 //     )
 // }
 //
-// export default Discussion;
+// export default Comments;
 
 
-// const Discussion = () => {
+// const Comments = () => {
 //
 //     const [comments,setComments] = useState(null);
 //     const [selectedId,setSelectedId] = useState(null);
@@ -121,13 +121,13 @@
 //     )
 // }
 //
-// export default Discussion;
+// export default Comments;
 
 
 //use json server
 
 
-// const Discussion = () => {
+// const Comments = () => {
 //
 //     const [comments,setComments] = useState(null);
 //     const [selectedId,setSelectedId] = useState(null);
@@ -164,13 +164,13 @@
 //     )
 // }
 //
-// export default Discussion;
+// export default Comments;
 
 
 //add new comment to comments
 
 
-// const Discussion = () => {
+// const Comments = () => {
 //
 //     const [comments,setComments] = useState(null);
 //     const [selectedId,setSelectedId] = useState(null);
@@ -216,13 +216,13 @@
 //     )
 // }
 //
-// export default Discussion;
+// export default Comments;
 
 
 //add comment to comments way2 with pass setComments
 
 
-// const Discussion = () => {
+// const Comments = () => {
 //
 //     const [comments,setComments] = useState(null);
 //     const [selectedId,setSelectedId] = useState(null);
@@ -260,13 +260,13 @@
 //     )
 // }
 //
-// export default Discussion;
+// export default Comments;
 
 
 //manage errors
 
 
-// const Discussion = () => {
+// const Comments = () => {
 //
 //     const [comments, setComments] = useState(null);
 //     const [selectedId, setSelectedId] = useState(null);
@@ -325,13 +325,13 @@
 //     )
 // }
 //
-// export default Discussion;
+// export default Comments;
 
 //use react toastify
 
 // import { toast } from 'react-toastify';
 //
-// const Discussion = () => {
+// const Comments = () => {
 //
 //     const [comments, setComments] = useState(null);
 //     const [selectedId, setSelectedId] = useState(null);
@@ -394,13 +394,13 @@
 //     )
 // }
 //
-// export default Discussion;
+// export default Comments;
 
 
 //write this code with async await
 
 
-// const Discussion = () => {
+// const Comments = () => {
 //
 //     const [comments, setComments] = useState(null);
 //     const [selectedId, setSelectedId] = useState(null);
@@ -461,7 +461,7 @@
 //     )
 // }
 //
-// export default Discussion;
+// export default Comments;
 
 
 //write http instead of axios
@@ -470,11 +470,11 @@
 // import Comment from "../../Components/Comment/Comment";
 // import FullComment from "../../Components/FullComment/FullComment";
 // import NewComment from "../../Components/NewComment/NewComment";
-// import "./discussion.css"
+// import "./Comments.css"
 // import {useEffect, useState} from "react";
 // import http from "../../services/httpService";
 //
-// const Discussion = () => {
+// const Comments = () => {
 //
 //     const [comments, setComments] = useState(null);
 //     const [selectedId, setSelectedId] = useState(null);
@@ -535,24 +535,95 @@
 //     )
 // }
 //
-// export default Discussion;
+// export default Comments;
 
 
 //write this code with functions instead of http and get and post etc...
 
 
 
+// import Comment from "../../Components/Comment/Comment";
+// import FullComment from "../../Components/FullComment/FullComment";
+// import NewComment from "../../Components/NewComment/NewComment";
+// import "./Comments.css"
+// import {useEffect, useState} from "react";
+// import {getAllComments} from "../../services/getAllComments";
+//
+// const Comments = () => {
+//
+//     const [comments, setComments] = useState(null);
+//     const [selectedId, setSelectedId] = useState(null);
+//     const [error, setError] = useState(false)
+//
+//     useEffect(() => {
+//         const getComments = async () => {
+//             try {
+//                 //destruct data from response
+//                 const {data} = await getAllComments();
+//                 setComments(data);
+//             } catch (e) {
+//                 setError(true);
+//             }
+//         }
+//         getComments();
+//     }, []);
+//
+//     const selectCommentHandler = (id) => {
+//         setSelectedId(id);
+//     }
+//
+//
+//     const renderComments = () => {
+//
+//         let renderValue = <p>Loading...</p>
+//
+//         if (error) {
+//             renderValue = <p>Fetching is failed</p>
+//         }
+//
+//         if (comments && !error){
+//             renderValue = comments.map(c =>
+//                 <Comment
+//                     key={c.id}
+//                     name={c.name}
+//                     email={c.email}
+//                     onClick={() => selectCommentHandler(c.id)}
+//                 />
+//             )
+//         }
+//
+//         return renderValue
+//     }
+//
+//     return (
+//         <main>
+//             <section>
+//                 {renderComments()}
+//             </section>
+//             <section>
+//                 <FullComment selectedId={selectedId} setComments={setComments} setSelectedId={setSelectedId}/>
+//             </section>
+//             <section>
+//                 <NewComment setComments={setComments}/>
+//             </section>
+//         </main>
+//     )
+// }
+//
+// export default Comments;
+
+
+//write this code with react-router-dom
+
 import Comment from "../../Components/Comment/Comment";
-import FullComment from "../../Components/FullComment/FullComment";
-import NewComment from "../../Components/NewComment/NewComment";
-import "./discussion.css"
+import "./Comments.css"
 import {useEffect, useState} from "react";
 import {getAllComments} from "../../services/getAllComments";
+import {Link} from "react-router-dom";
 
-const Discussion = () => {
+const Comments = () => {
 
     const [comments, setComments] = useState(null);
-    const [selectedId, setSelectedId] = useState(null);
     const [error, setError] = useState(false)
 
     useEffect(() => {
@@ -568,10 +639,6 @@ const Discussion = () => {
         getComments();
     }, []);
 
-    const selectCommentHandler = (id) => {
-        setSelectedId(id);
-    }
-
 
     const renderComments = () => {
 
@@ -583,31 +650,20 @@ const Discussion = () => {
 
         if (comments && !error){
             renderValue = comments.map(c =>
-                <Comment
-                    key={c.id}
-                    name={c.name}
-                    email={c.email}
-                    onClick={() => selectCommentHandler(c.id)}
-                />
+                <Link to={`full-comment/${c.id}`} key={c.id}>
+                    <Comment
+                        name={c.name}
+                        email={c.email}
+                    />
+                </Link>
             )
         }
 
         return renderValue
     }
 
-    return (
-        <main>
-            <section>
-                {renderComments()}
-            </section>
-            <section>
-                <FullComment selectedId={selectedId} setComments={setComments} setSelectedId={setSelectedId}/>
-            </section>
-            <section>
-                <NewComment setComments={setComments}/>
-            </section>
-        </main>
-    )
+    return <section>{renderComments()}</section>
+
 }
 
-export default Discussion;
+export default Comments;
